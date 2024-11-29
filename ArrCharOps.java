@@ -36,35 +36,36 @@ public class ArrCharOps {
     /** Returns the char value at the specified index. Assume that the array is non-empty.
      */
     public static char charAt(char[] arr, int index) {
-        for(int i = 0; i < arr.length; i++){
-            if(i == index){
-                char x = arr[i];
-                return x;
-            }
-        }
-         return 0;
+          for(int i = 0; i < arr.length; i++){
+             if(i == index) return arr[i];
+          }
+          return 0;
     }
 
     /** If the two arrays have the same value in every index, 
      *  returns true; Otherwise returns false.
      */
     public static boolean equals(char[] arr1, char[] arr2) {
-        if(arr1 == arr2){
-            return true;
-        }
-        return false;
+         if(arr1.length == arr2.length){
+            for(int i = 0; i < arr1.length; i++){
+                if(arr1[i] != arr2[i]){
+                    return false;
+                }
+            }
+         }
+         return true;
     }
 
     /** Returns the index within the given array of the first occurrence of the given character.
      *  If no such character is found, returns -1.
      */
     public static int indexOf(char[] arr, char ch) {
-        for(int i = 0; i < arr.length; i++){
+         for(int i = 0; i < arr.length; i++){
             if(arr[i] == ch){
                 return i;
             }
-        }
-        return -1;
+         }
+         return -1;
     }
 
     /** Same as indexOf(char[], char), but starts the search in the given index.
@@ -74,7 +75,7 @@ public class ArrCharOps {
             if(arr[i] == ch){
                 return i;
             }
-        }
+         }
         return -1;
     }
 
@@ -86,22 +87,22 @@ public class ArrCharOps {
             if(arr[i] == ch){
                 return i;
             }
-        }
-        return -1;
+         }
+         return -1;
     }
 
     /* Returns an array which is the concatanation of the two given arrays.
     */
     public static char[] concat(char[] arr1, char[] arr2) {
-        int size = arr1.length + arr2.length;
-        char[] arr = new char[size];
+        char[] arr3 = new char[arr1.length + arr2.length];
         for(int i = 0; i < arr1.length; i++){
-                arr[i] = arr1[i];
+            arr3[i] = arr1[i];
         }
-        for(int i = 0; i < arr2.length; i++){
-            arr[arr1.length + i] = arr2[i];
+        int x = 0;
+        for(int i = arr1.length; i < arr3.length; i++){
+            arr3[i] = arr2[x++];
         }
-        return arr;
+        return arr3;
     }
 
     /** Returns a new array that can be described as a sub-array of this array.
@@ -112,9 +113,8 @@ public class ArrCharOps {
     public static char[] subArray(char[] arr, int beginIndex, int endIndex) {
         char[] arr1 = new char[arr.length];
         int x = 0;
-        for(int i = beginIndex; i <= endIndex; i++){
-            arr1[x] = arr[i];
-            x++;
+        for(int i = beginIndex; i < endIndex; i++){
+            arr1[x++] = arr[i];
         }
         return arr1;
     }
@@ -129,7 +129,7 @@ public class ArrCharOps {
     public static long hashCode(char[] arr) {
         long hash = 0;
         for(int i = 0; i < arr.length; i++){
-            hash +=  arr[i] * Math.pow(7, arr.length - i - 1);
+            hash += arr[i] * Math.pow(7 , arr.length - i - 1);
         }
         return hash;
     }
@@ -160,26 +160,18 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-    int len1 = str1.length();
-    int len2 = str2.length();
-    int minLen = Math.min(len1, len2);
+       if(str1.length() == str2.length()){
+        int counter = 0;
+         for(int i = 0; i < str1.length(); i++){
+             if(str1.charAt(i) == str2.charAt(i)){
+                counter++;
+             }
+             else if(str1.charAt(i) > str2.charAt(i)) return 1;
+         }
+         if(counter == str1.length()) return 0;
+         return -1;
+       }
 
-    for (int i = 0; i < minLen; i++) {
-        if (str1.charAt(i) < str2.charAt(i)) {
-            return -1;
-        } 
-        else if (str1.charAt(i) > str2.charAt(i)) {
-            return 1;
-        }
+       return -2;
     }
-
-    if (len1 < len2) {
-        return -1;
-    } 
-    else if (len1 > len2) {
-        return 1;
-    }
-
-    return 0;
-}
 }
