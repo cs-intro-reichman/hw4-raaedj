@@ -21,9 +21,13 @@ public class Primes {
                 counter++;
             }
         }
-        double result =  counter / n * 100;
-        System.out.println("There are " + (int)counter + " primes between 2 and " + n +
-                           " (" + (int)result +"% are primes)");
+        int totalNumbers = n - 1; // Numbers between 2 and n
+        int percentage = (int) Math.round(((double) counter / totalNumbers) * 100);
+
+        // Print total count of primes with percentage
+        System.out.println("There are " + counter + " primes between 2 and " + n +
+                " (" + percentage + "% are primes)");
+    }
 
        
     }
