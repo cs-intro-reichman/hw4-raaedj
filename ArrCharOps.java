@@ -56,6 +56,17 @@ public class ArrCharOps {
          return true;
     }
 
+    private static boolean equals(String arr1, String arr2) {
+        if(arr1.length() == arr2.length()){
+           for(int i = 0; i < arr1.length(); i++){
+               if(arr1.charAt(i) != arr2.charAt(i)){
+                   return false;
+               }
+           }
+        }
+        return true;
+   }
+
     /** Returns the index within the given array of the first occurrence of the given character.
      *  If no such character is found, returns -1.
      */
@@ -160,18 +171,29 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-       if(str1.length() == str2.length()){
-        int counter = 0;
-         for(int i = 0; i < str1.length(); i++){
-             if(str1.charAt(i) == str2.charAt(i)){
-                counter++;
-             }
-             else if(str1.charAt(i) > str2.charAt(i)) return 1;
-         }
-         if(counter == str1.length()) return 0;
-         return -1;
-       }
-
-       return -2;
+        if (str1 == null || str2 == null || str1.isEmpty() || str2.isEmpty()) {
+            return -2; // Error code for invalid input
+        }
+    
+        int len1 = str1.length();
+        int len2 = str2.length();
+        int minLength = Math.min(len1, len2);
+    
+        // Compare characters one by one
+        for (int i = 0; i < minLength; i++) {
+            char char1 = str1.charAt(i);
+            char char2 = str2.charAt(i);
+    
+            if (char1 != char2) {
+                return char1 < char2 ? -1 : 1;
+            }
+        }
+    
+        // If all compared characters are equal, compare lengths
+        if (len1 == len2) {
+            return 0; // Strings are equal
+        }
+    
+        return len1 < len2 ? -1 : 1;
     }
 }
