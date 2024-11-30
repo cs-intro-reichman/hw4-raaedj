@@ -13,6 +13,7 @@ public class Primes {
                 }
             }
         }
+        System.out.println("Prime numbers up to " + n + ":");
          double counter = 0.0;
          for(int k = 0; k < p.length; k++){
             if(p[k]){
