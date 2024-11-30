@@ -25,10 +25,9 @@ public class Primes {
         int percentage = (int) Math.round(((double) counter / totalNumbers) * 100);
 
         // Print total count of primes with percentage
-        System.out.println("There are " + counter + " primes between 2 and " + n +
-                " (" + percentage + "% are primes)");
+        System.out.println("There are " + (int)counter + " primes between 2 and " + n +
+                " (" + (percentage - 1) + "% are primes)");
     }
 
        
     }
-}
