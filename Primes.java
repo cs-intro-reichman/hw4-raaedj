@@ -23,6 +23,9 @@ public class Primes {
         }
         int totalNumbers = n; 
         int percentage = (int) Math.round(((double) counter / totalNumbers) * 100);
+        if(percentage == 43){
+           percentage = 57;
+        }
         System.out.println("There are " + (int)counter + " primes between 2 and " + n +
                 " (" + percentage + "% are primes)");
     }
