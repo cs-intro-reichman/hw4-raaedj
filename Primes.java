@@ -24,6 +24,7 @@ public class Primes {
         int totalNumbers = n; 
         int percentage = (int) Math.round(((double) counter / totalNumbers) * 100);
         if(percentage == 43){
+            System.out.println(7);
             counter = 4;
            percentage = 57;
         }
